@@ -2,34 +2,76 @@
 " General VIM configuration
 "
 
-"ignore case in pattern search
+"Ignore case in pattern search
 set ignorecase
-"if upper case is used in pattern search uppercase is not ignored
+"If upper case is used in pattern search uppercase is not ignored
 set smartcase
-"sets the title with the name of the file
+"Sets the title with the name of the file
 set title
 "Intuitive backspacing in insert mode
 set backspace=indent,eol,start
 "Highlight syntax
 syntax on
+"Detect syntax highlight and other stuff based on the fyle type
+filetype on
+"Use file type to select apropriate plugins
+filetype plugin on
+"Enable Omni Completion (included in VIM 7)
+set ofu=syntaxcomplete#Complete
 "Highlight search terms...
 set hlsearch
 "...dynamically as they are typed.
 set incsearch
-"show line numbers
+"Show line numbers
 set number
-"use dark background
+"Use dark background
 set background=dark
-"enable mouse make sure to istall mouse term and simbl
+"Enable mouse make sure to istall mouse term and simbl
 set mouse=a
+
+"
+"Python identation rules
+"
+
+"Comply to PEP 8(Pythons’ style guide)
+set expandtab
+set textwidth=79
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+
+"
+"MacVim configuration
+"
+
+"Set MacVim color scheme to pablo
+if has('gui_running')
+    colorscheme pablo
+endif
 
 "
 "NERDTree configuration
 "
 
-"open NERDTree when VIM starts
+"Set mouse mode
+let NERDTreeMouseMode=2
+"Open NERDTree when VIM starts
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
-"set mouse mode
-let NERDTreeMouseMode=2
 
+"
+"Vim Taglist configuration 
+"
+
+"Install Exuberant CTAGS from sourceforge
+"./configure
+"make
+"make install
+"add export PATH="/usr/local/bin:$PATH" to .bash_profile
+"source .bash_profile
+
+"Put Tagslist on the right side
+let Tlist_Use_Right_Window=1
+"Open Tagslist when VIM starts
+autocmd VimEnter * TlistToggle
